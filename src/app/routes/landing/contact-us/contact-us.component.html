@@ -1,0 +1,88 @@
+
+<div class="eoi">
+  <h4>Leave your information and our team will contact you within 24 hours </h4>
+
+  <!-- <form [formGroup]="form"  #fd=ngForm (ngSubmit)="submit()">
+      <mat-form-field class="input-group">
+          <mat-label>name</mat-label>
+          <input matInput  placeholder="name" formControlName="name">
+          <mat-hint>please input your name</mat-hint>
+          <mat-error *ngIf="submitted && f.name.errors">
+            Please enter your name.
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input-group">
+         <mat-label>Phone number</mat-label>
+         <input matInput placeholder="phone number" formControlName="phone">
+         <mat-hint>Please input your phone number</mat-hint>
+         <mat-error *ngIf="f.phone.errors.required"> Invalid phone number.</mat-error>
+
+      </mat-form-field>
+
+      <mat-form-field class="input-group">
+         <mat-label>email</mat-label>
+         <input matInput placeholder="email" formControlName="email">
+         <mat-hint> Please enter email address.</mat-hint>
+         <mat-error *ngIf="f.email.errors.required">Invalid email address.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input-group">
+         <mat-label>tell us you want</mat-label>
+         <textarea matInput></textarea>
+         <mat-hint> Please enter what you want.</mat-hint>
+      </mat-form-field>
+      <button mat-button color="accent">submit</button>
+  </form> -->
+
+  <form [formGroup]="form" #fd=ngForm>
+  <div class="input-group">
+    <input placeholder="Name" formControlName="name">
+
+      <div class="error" *ngIf="submitted && f.name.errors">
+        Please enter your name.
+    </div>
+  </div>
+
+  <div class="input-group">
+    <input placeholder="Phone number" formControlName="phone">
+      <div class="error" *ngIf="submitted && f.phone.errors">
+      <ng-container *ngIf="f.phone.errors.required">
+          Please enter phone number.
+      </ng-container>
+       <ng-container *ngIf="!f.phone.errors.required && f.phone.errors.pattern">
+          Invalid phone number.
+      </ng-container>
+    </div>
+  </div>
+
+
+  <div class="input-group">
+    <input placeholder="Email" formControlName="email">
+    <div class="error" *ngIf="submitted && f.email.errors" >
+      <ng-container *ngIf="f.email.errors.required">
+        Please enter email address.
+      </ng-container>
+
+      <ng-container *ngIf="!f.email.errors.required && f.email.errors.pattern">
+        Invalid email address.
+      </ng-container>
+    </div>
+  </div>
+
+
+  <div class="input-group text-top">
+    <textarea name="" id="" cols="30" rows="10" placeholder="Tell us about your want"
+    formControlName="textArea"
+    >
+    </textarea>
+
+  </div>
+
+</form>
+
+    <div class="input-group">
+      <button mat-button (click)="submit()">submit</button>
+    </div>
+
+</div>

@@ -1,0 +1,51 @@
+.content-container{
+
+
+
+  // fourth row
+
+  .fourth-we-offer{
+    .Firstlook-fourth-row{
+
+      ul {
+        li {
+          text-overflow:ellipses;
+          font-family: "Inter";
+          font-style: normal;
+          font-weight: 500;
+          font-size: .18rem;
+          line-height: .3rem;
+
+          @media screen and ( max-width: 1279px){
+            font-size: .24rem;
+            line-height: .3rem;
+        }
+        }
+      }
+    }
+  }
+
+
+  // seven row
+  .btn-yellow {
+    width: 3.66rem;
+        align-self: center;
+        height: .66rem;
+        background-color: #00725B;
+        border-radius: .38rem;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: .2rem;
+        line-height: .24rem;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+
+      &:hover {
+        background: #37b89e;
+        }
+      }
+}

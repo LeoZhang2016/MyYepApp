@@ -1,0 +1,53 @@
+.eoi {
+  padding: 20px;
+  background: #fff;
+  border-radius: 20px;
+  h4 {
+    font-weight: 500;
+    font-size: .2rem;
+    margin-top: 0;
+    margin-bottom: .2rem;
+  }
+  .input-group {
+    margin-bottom: 20px;
+    width: 100%;
+      input {
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 6px;
+        width: 100%;
+        box-sizing: border-box;
+        outline: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+    .error {
+      margin-top: 10px;
+      color: #da3f15;
+      font-size: .18rem;
+    }
+  }
+  textarea{
+    margin-top: .6rem;
+    margin: auto;
+    width: 100%;
+    border: 0.2px solid #ddd;
+    font: .2rem;
+    box-sizing: border-box;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  button {
+    background: #ff7712;
+    color: #fff;
+    width: 100%;
+  }
+
+}
+
+
+

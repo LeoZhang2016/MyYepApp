@@ -1,0 +1,166 @@
+<mat-sidenav-container fxFlexFill [hasBackdrop]="true" *ngIf="!routeLoading" style="z-index: 100" id="scrollWrap">
+    <mat-sidenav #sidenav position="end" mode="over" class="menu-container"
+                 style="background-color: rgba(0,0,0,.75); position: fixed">
+        <div style="padding: 20px 20px 0 20px">
+            <h4 style="color: #fff; margin-top: 0; margin-bottom: 0; font-family: 'Inter'; font-weight: 700">{{'menu' | translate}}</h4>
+        </div>
+         <mat-nav-list fxLayout="column" class="core-only"
+                      style="color: #fff ; width: 300px; font-family: 'Inter'"
+                      ngStyle.lt-md="width: 250px">
+            <div (click)="openNewTab('/home', sidenav)">
+                <img src="./assets/images/sidemenu/menu_icon_home.svg" style="margin-right: 10px">
+                <span >{{'home' | translate}}</span>
+            </div>
+            <div (click)="openNewTab('/map-display', sidenav)">
+                <img src="./assets/images/sidemenu/menu_icon_projects.svg" style="margin-right: 10px">
+                <span>{{'search_new_homes' | translate}}</span>
+            </div>
+            <div (click)="openNewTab('/agents', sidenav)">
+                <img src="./assets/images/sidemenu/menu_icon_agents.svg" style="margin-right: 10px">
+                <span>{{'smart_agent' | translate}}</span>
+            </div>
+            <div (click)="openNewTab('/cloud', sidenav)">
+                <img src="./assets/images/sidemenu/menu_icon_3D.svg" style="margin-right: 10px">
+                <span>{{'showroom' | translate}}</span>
+            </div>
+            <div (click)="openNewTab('/news', sidenav)">
+                <img src="./assets/images/sidemenu/menu_icon_news.svg" style="margin-right: 10px">
+                <span>{{'news' | translate}}</span>
+            </div>
+            <div routerLink="/" (click)="sidenav.toggle()">
+                <img src="./assets/images/sidemenu/gift.svg" style="margin-right: 10px; width: 20px; height: 20px">
+                <span>{{'event' | translate}}</span>
+            </div>
+        </mat-nav-list>
+
+        <!-- <div style="padding: 20px 20px 0 20px">
+            <h4 style="color: #fff; margin-top: 0; margin-bottom: 0; font-family: 'Inter'; font-weight: 700">{{'language_capital' | translate}}</h4>
+        </div> -->
+        <!-- <mat-nav-list fxLayout="column" class="core-only"
+                      style="color: #fff ; width: 300px; font-family: 'Inter'"
+                      ngStyle.lt-md="width: 250px">
+            <div (click)="switchLang('en')">
+                <span>English</span>
+            </div>
+            <div (click)="switchLang('zh')">
+                <span>中文</span>
+            </div>
+        </mat-nav-list> -->
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill [ngClass]="{'for-login':!showNavbar}" style="background: white">
+        <mat-toolbar *ngIf="showNavbar && !routeLoading"
+          style="background: rgb(14, 13, 13);position:fixed; top:0;left:0;opacity:0.8"
+                     [ngClass]="{'lightNavbar': this.userLightNavbar, 'darkNavbar': !this.userLightNavbar, 'topLightNavbar': this.useTopLightNavbar}">
+            <mat-toolbar-row>
+                <div style="height:100%; width: 100%; max-width: 1600px !important; margin: 0 auto" fxLayout="row"
+                     ngStyle.lt-sm="width: 100%" fxLayoutAlign="space-between center">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <div routerLink="/home" style="cursor: pointer;outline: none"
+                           (click)="goHome()"
+                             fxLayoutAlign="center center">
+                                <img src="./assets/images/logo.svg"
+                                     style="width: 150px; outline: none" ngStyle.lt-sm="width: 100px"
+                                     ngStyle.lt-md="width: 150px; margin-left: 10px"/>
+                        </div>
+                    </div>
+                    <div fxShow="true"
+                         class="tab">
+                        <ng-container>
+                            <a (click)="openNewTab('/map-display')"
+                               [ngStyle]="{fontFamily: lang === 'zh' ? 'Inter' : 'Inter'}"
+                               fxHide.lt-md="true">
+                                {{'search_new_homes' | translate}}
+                            </a>
+                            <a (click)="openNewTab('/agents')"
+                               [ngStyle]="{fontFamily: lang === 'zh' ? 'Inter' : 'Inter'}"
+                               fxHide.lt-md="true">
+                                {{'smart_agent' | translate}}
+                            </a>
+                            <a (click)="openNewTab('/cloud')"
+                               [ngStyle]="{fontFamily: lang === 'zh' ? 'Inter' : 'Inter'}"
+                               fxHide.lt-md="true">
+                                {{'showroom' | translate}}
+                            </a>
+                            <a (click)="openNewTab('/news')"
+                               [ngStyle]="{fontFamily: lang === 'zh' ? 'Inter' : 'Inter', marginRight: '40px'}"
+                               fxHide.lt-md="true">
+                                {{'news' | translate}}
+                            </a>
+                            <a (click)="openNewTab('/event')"
+                               [ngStyle]="{fontFamily: lang === 'zh' ? 'Inter' : 'Inter', marginRight: '40px', position: 'relative'}"
+                               fxHide.lt-md="true">
+                                {{'event' | translate}}
+                            </a>
+
+                        </ng-container>
+                        <!-- <button [matMenuTriggerFor]="languageMenu"
+                                fxHide.lt-md="true"
+                                (click)="setLanguageMenuPanelStyle()"
+                                mat-icon-button
+                                ngStyle.lt-sm="width: 30px !important; margin-right: 0"
+                                style="margin-right: 40px">
+                          <mat-icon style="color: #fff">language</mat-icon>
+                        </button> -->
+                        <!-- <mat-menu #languageMenu="matMenu" backdropClass="custom__lang__menu" Position="below">
+                            <div fxLayout="column">
+                                <a mat-button
+                                   style="justify-content: flex-start; width: 180px; color: black; font-size: 14px"
+                                   (click)="switchLang('en')">
+                                    English
+                                </a>
+                                <a mat-button
+                                   style="justify-content: flex-start; width: 180px; color: black; font-family: 'Inter'; font-size: 14px"
+                                   (click)="switchLang('zh')">
+                                    简体中文
+                                </a>
+                            </div>
+                        </mat-menu> -->
+                        <!-- <ng-container *ngIf="false">
+                            <a (click)="openLoginDialog()"
+                               class="login"
+                               [ngStyle]="{border: userLightNavbar ? '1px solid #fff' : 'none', color: '#fff', background: userLightNavbar ? 'none' : '#ff5712', cursor: 'pointer', fontFamily: lang === 'zh' ? 'Noto Sans SC' : 'Inter', height: '40px', padding: '0 12px', marginRight: '10px'}"
+                               [ngStyle.lt-md]="{cursor: 'pointer', fontFamily: lang === 'zh' ? 'Noto Sans SC' : 'Inter', marginRight: '0px', border: 'none', color: userLightNavbar ? '#fff' : '#222222'}"
+                               [ngStyle.lt-sm]="{cursor: 'pointer', fontFamily: lang === 'zh' ? 'Noto Sans SC' : 'Inter', fontSize: '14px',  marginRight: '0px', border: 'none', color: userLightNavbar ? '#fff' : '#222222'}">
+                                {{'signin' | translate}}
+                            </a>
+                            <button *ngIf="userService.user"
+                                    [matMenuTriggerFor]="userMenu"
+                                    (click)="setUserMenuPanelStyle()"
+                                    style="outline: none; cursor: pointer; border: none; background: none; margin-right: 0">
+                                <img [src]="userLightNavbar ? '../../assets/image/navbar/default-user-dark.svg' : '../../assets/image/navbar/default-user-dark.svg'"
+                                     style="margin-left: 5px; width: 20px; height: 20px">
+                            </button>
+                            <mat-menu #userMenu="matMenu" backdropClass="custom__menu" Position="below">
+                                <div fxLayout="column">
+                                    <a routerLink="/user-center"
+                                       mat-button
+                                       style="justify-content: flex-start; width: 180px; color: black; text-align: left; font-family: 'Inter Regular'; font-size: 14px">
+                                        {{'profile' | translate}}
+
+                                    </a>
+                                    <a mat-button
+                                       style="justify-content: flex-start; width: 180px; color: black; text-align: left; font-family: 'Inter Regular'; font-size: 14px"
+                                       (click)="logout()">
+                                        {{'logout' | translate}}
+                                    </a>
+                                </div>
+                            </mat-menu>
+                        </ng-container> -->
+                        <button mat-icon-button (click)="sidenav.toggle()" fxShow="false" fxShow.lt-md
+                                style="margin-left: 5px; margin-right: 0">
+                            <mat-icon *ngIf="!sidenav.opened" style="font-size: 27px"
+                                      ngStyle.lt-sm="width: 27px; height: 27px;"
+                                      [ngClass]="{'lightIcon': this.userLightNavbar, 'darkIcon': !this.userLightNavbar}">
+                                menu
+                            </mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+        <!--        <app-cookie style="width: calc(100% - 20px); position: fixed; bottom: 0; right: 10px; z-index: 11;"></app-cookie>-->
+<!--        <app-footer [showFooter]="showFooter" [isSmall]="smallFooter" [isInMapPage]="false"></app-footer>-->
+    </mat-sidenav-content>
+</mat-sidenav-container>
+

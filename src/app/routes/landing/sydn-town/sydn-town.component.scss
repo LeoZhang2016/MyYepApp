@@ -1,0 +1,28 @@
+.content-container{
+
+
+
+  // fifth row
+
+  .btn-yellow {
+    width: 3.66rem;
+    align-self: center;
+    height: .66rem;
+    background-color: #00725B;
+    border-radius: .38rem;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: .2rem;
+    line-height: .24rem;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+      &:hover {
+        background: #e6a26e;
+        }
+      }
+}
